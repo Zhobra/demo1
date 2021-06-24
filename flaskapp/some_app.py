@@ -68,7 +68,7 @@ def net():
  # проверяем нажатие сабмит и валидацию введенных данных
  if form.validate_on_submit():
   # файлы с изображениями читаются из каталога static
-  files = [item.name for item in os.scandir(dir_name) if item.is_file()] 
+  files = [item.name for item in os.scandir('./static') if item.is_file()] 
   for f in files:
    os.remove('./static/'+f.name)
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
