@@ -70,7 +70,7 @@ def net():
   # файлы с изображениями читаются из каталога static
   files = [item.name for item in os.scandir('./static') if item.is_file()] 
   for f in files:
-   os.remove('./static/'+f.name)
+   os.remove('./static/'+f)
   filename = os.path.join('./static', secure_filename(form.upload.data.filename))
   # сохраняем загруженный файл
   form.upload.data.save(filename)
