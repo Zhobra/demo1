@@ -52,13 +52,10 @@ class NetForm(FlaskForm):
  #кнопка submit, для пользователя отображена как send
  submit = SubmitField('send')
  
-# функция обработки запросов на адрес 127.0.0.1:5000/net
+# функция обработки запросов на адрес .../net
 # модуль проверки и преобразование имени файла
-# для устранения в имени символов типа / и т.д.
 from werkzeug.utils import secure_filename
 import os
-# подключаем наш модуль и переименовываем
-# для исключения конфликта имен
 import net as neuronet
 # метод обработки запроса GET и POST от клиента
 @app.route("/net",methods=['GET', 'POST'])
@@ -99,8 +96,6 @@ def apinet():
  if request.mimetype == 'application/json': 
   # получаем json данные
   data = request.get_json()
-  # берем содержимое по ключу, где хранится файл
-  # закодированный строкой base64
   # декодируем строку в массив байт, используя кодировку utf-8
   # первые 128 байт ascii и utf-8 совпадают, потому можно
   filebytes = data['imagebin'].encode('utf-8')
