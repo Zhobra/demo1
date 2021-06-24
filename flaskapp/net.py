@@ -20,9 +20,7 @@ config.gpu_options.allow_growth = True
 session = InteractiveSession(config=config)
 height = 224
 width = 224
-nh=224
-nw=224
-ncol=3
+(nh, nw, ncol) = (224, 224, 3)
 # загружаем и создаем стандартную уже обученную сеть keras
 visible2 = Input(shape=(nh,nw,ncol),name = 'imginp')
 resnet = keras.applications.resnet_v2.ResNet50V2(include_top=True,
